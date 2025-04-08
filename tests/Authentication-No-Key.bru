@@ -1,0 +1,21 @@
+meta {
+  name: Authentication-No-Key
+  type: http
+  seq: 7
+}
+
+post {
+  url: https://www.sternhagensystems.com:8834/test
+  body: xml
+  auth: none
+}
+
+body:xml {
+  <?xml version="1.0" encoding="UTF-8"?><root><rows><text>Test</text><request>null</request></rows></root>
+}
+
+tests {
+  test("Key Rejected", function() {
+    expect(res.getStatus()).to.equal(400);
+  });
+}

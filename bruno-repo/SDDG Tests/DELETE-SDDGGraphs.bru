@@ -1,0 +1,20 @@
+meta {
+  name: DELETE-SDDGGraphs
+  type: http
+  seq: 1
+}
+
+delete {
+  url: https://www.sternhagensystems.com:8833/SDDGGraphs
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: kjlkutndcnlkldf77294475jdcscnjkueihe99833dnisuhfdusdhieunc774823rijvsjoieuhudcji
+}
+
+script:pre-request {
+  let requestid = bru.getEnvVar("request-id")
+  req.setHeader("x-request-id", requestid)
+}

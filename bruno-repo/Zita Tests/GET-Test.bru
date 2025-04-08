@@ -1,0 +1,20 @@
+meta {
+  name: GET-Test
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8836/api/RequestHandler/test?param1=value1&param2=value2
+  body: none
+  auth: none
+}
+
+params:query {
+  param1: value1
+  param2: value2
+}
+
+headers {
+  x-api-key: 12345
+}

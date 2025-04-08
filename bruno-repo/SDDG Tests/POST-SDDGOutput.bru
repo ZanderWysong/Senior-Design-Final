@@ -1,0 +1,24 @@
+meta {
+  name: POST-SDDGOutput
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://www.sternhagensystems.com:8833/SDDGOutput
+  body: xml
+  auth: none
+}
+
+headers {
+  x-api-key: kjlkutndcnlkldf77294475jdcscnjkueihe99833dnisuhfdusdhieunc774823rijvsjoieuhudcji
+}
+
+body:xml {
+  <?xml version="1.0" encoding="UTF-8"?><root><rows><project>sasm</project><request>0</request></rows></root>
+}
+
+script:post-response {
+  let requestid = res.getBody();
+  bru.setEnvVar("request-id", requestid);
+}

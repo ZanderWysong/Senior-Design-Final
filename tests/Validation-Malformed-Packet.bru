@@ -1,0 +1,25 @@
+meta {
+  name: Authentication-Malformed-Packet
+  type: http
+  seq: 7
+}
+
+post {
+  url: https://www.sternhagensystems.com:8834/test
+  body: xml
+  auth: none
+}
+
+headers {
+  x-api-key: 12345
+}
+
+body:xml {
+  <?xml version="1.0" encoding="UTF-8"?><root><rows><text>Test</text><request>null</request></root>
+}
+
+tests {
+  test("Packet Rejected", function() {
+    expect(res.getStatus()).to.equal(400);
+  });
+}

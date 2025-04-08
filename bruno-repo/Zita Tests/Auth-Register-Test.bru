@@ -1,0 +1,18 @@
+meta {
+  name: "Auth-Register-Test"
+  type: http
+  seq: 6
+}
+
+post {
+  url: "http://localhost:8836/api/Auth/register"
+  headers {
+    "Content-Type": "application/json"
+  }
+  body: json {
+    "Email": "testuser@example.com",
+    "Password": "TestPassword123!",
+    "Role": "admin",
+    "OrgCode": "TDS-ABC-123"
+  }
+}

@@ -1,0 +1,46 @@
+meta {
+  name: PUT-SDDGInput
+  type: http
+  seq: 1
+}
+
+put {
+  url: https://www.sternhagensystems.com:8833/SDDGInput
+  body: xml
+  auth: none
+}
+
+headers {
+  x-api-key: kjlkutndcnlkldf77294475jdcscnjkueihe99833dnisuhfdusdhieunc774823rijvsjoieuhudcji
+}
+
+body:xml {
+  <?xml version="1.0" encoding="UTF-8"?>
+  <root>
+      <rows>
+          <project>test</project>
+          <request>1</request>
+          <value>Hello</value>
+      </rows>
+      <rows>
+          <project>test</project>
+          <request>1</request>
+          <value>my</value>
+      </rows>
+      <rows>
+          <project>test</project>
+          <request>1</request>
+          <value>name</value>
+      </rows>
+      <rows>
+          <project>test</project>
+          <request>1</request>
+          <value>is</value>
+      </rows>
+      <rows>
+          <project>test</project>
+          <request>1</request>
+          <value>Grant</value>
+      </rows>
+  </root>
+}

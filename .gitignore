@@ -1,0 +1,37 @@
+# Ignore build outputs
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs and database files
+*.log
+*.db-shm
+*.db-wal
+*.db
+
+# Dependency directories
+node_modules/
+bower_components/
+
+# Visual Studio files
+.vscode/
+*.psess
+
+# JetBrains Rider files
+.idea/
+
+# Deployment files
+.publish/
+
+# Environment variables
+.env
+.env.*

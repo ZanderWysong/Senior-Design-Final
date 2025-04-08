@@ -1,0 +1,20 @@
+meta {
+  name: DELETE-Endpoint
+  type: http
+  seq: 1
+}
+
+delete {
+  url: https://www.sternhagensystems.com:8833/tables
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: sdf;alkdfipp[oegsdfj;lkeepoitacouiroiuaerhgidsfjn;lksjdcnsdffgasrrteauihgsajol;j
+}
+
+script:pre-request {
+  let requestid = bru.getEnvVar("request-id")
+  req.setHeader("x-request-id", requestid)
+}

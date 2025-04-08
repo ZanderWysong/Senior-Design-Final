@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "SMASettings",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

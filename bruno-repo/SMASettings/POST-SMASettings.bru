@@ -1,0 +1,24 @@
+meta {
+  name: POST-SMASettings
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://www.sternhagensystems.com:8833/SMASettings
+  body: xml
+  auth: none
+}
+
+headers {
+  x-api-key: thisIsAnAPIKeyThatICreatedByTypingALotOfCharactersIntoATextEditorRunningOnAnOS11
+}
+
+body:xml {
+  <?xml version="1.0" encoding="UTF-8"?><root><rows><showid>null</showid><key>null</key><value>null</value></rows></root>
+}
+
+script:post-response {
+  let requestid = res.getBody();
+  bru.setEnvVar("request-id", requestid);
+}

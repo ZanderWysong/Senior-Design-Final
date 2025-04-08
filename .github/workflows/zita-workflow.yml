@@ -1,0 +1,72 @@
+name: Zita Data System CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      - name: Build Project
+        run: dotnet build --configuration Release
+
+      - name: Archive Build Artifacts
+        run: tar -czf zita_$GITHUB_SHA.tar.gz -C ./bin/Release/net7.0 .
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: zita-build
+          path: zita_$GITHUB_SHA.tar.gz
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: zita-build
+
+      - name: Deploy to Server
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          scp -i $DEPLOY_KEY -P 3270 zita_*.tar.gz $DEPLOY_USER@$DEPLOY_HOST:/home/$DEPLOY_USER
+          ssh -i $DEPLOY_KEY -p 3270 $DEPLOY_USER@$DEPLOY_HOST << 'EOF'
+          tar -xzf zita_*.tar.gz -C /srv/zita
+          cd /srv/zita
+          sudo systemctl restart zita.service
+          EOF
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Run Tests
+        run: dotnet test

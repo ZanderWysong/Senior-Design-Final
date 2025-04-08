@@ -1,0 +1,24 @@
+meta {
+  name: POST-SDDGRunStatus
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://www.sternhagensystems.com:8833/SDDGRunStatus
+  body: xml
+  auth: none
+}
+
+headers {
+  x-api-key: kjlkutndcnlkldf77294475jdcscnjkueihe99833dnisuhfdusdhieunc774823rijvsjoieuhudcji
+}
+
+body:xml {
+  <?xml version="1.0" encoding="UTF-8"?><root><rows><project>test</project><request>123456</request></rows></root>
+}
+
+script:post-response {
+  let requestid = res.getBody();
+  bru.setEnvVar("request-id", requestid);
+}

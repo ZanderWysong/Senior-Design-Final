@@ -1,0 +1,29 @@
+meta {
+  name: PUT-Test
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8836/api/RequestHandler/test
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: 12345
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "rows": [
+      {
+        "param1": "ZMONEY",
+        "param2": "Shit"
+      }
+    ]
+  }
+  
+}

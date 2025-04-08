@@ -1,0 +1,19 @@
+meta {
+  name: PATCH-Test
+  type: http
+  seq: 3
+}
+
+patch {
+  url: https://www.sternhagensystems.com:8833/test
+  body: xml
+  auth: none
+}
+
+headers {
+  x-api-key: 12345
+}
+
+body:xml {
+  <?xml version="1.0" encoding="UTF-8"?><root><rows><text>null</text><request>1</request></rows></root>
+}

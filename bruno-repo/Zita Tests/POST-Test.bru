@@ -1,0 +1,37 @@
+meta {
+  name: POST-Test
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:8836/api/RequestHandler/test
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: 12345
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "rows": [
+      {
+        "param1": "twelve",
+        "param2": "value2"
+      }
+    ]
+  }
+  
+}
+
+script:post-response {
+  let requestid = res.getBody();
+  bru.setEnvVar("request-id", requestid);
+  console.log("Received raw response:", res.getBody());
+  console.log("Extracted request ID:", requestid)
+  
+}

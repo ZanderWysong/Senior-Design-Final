@@ -1,0 +1,20 @@
+meta {
+  name: DELETE-SMASettings
+  type: http
+  seq: 1
+}
+
+delete {
+  url: https://www.sternhagensystems.com:8833/SMASettings
+  body: none
+  auth: none
+}
+
+headers {
+  x-api-key: ieeeIsAnOrganizationLocatedAroundTheWorldThatWorksWithSeaMonstersAndStuff3131313
+}
+
+script:pre-request {
+  let requestid = bru.getEnvVar("request-id")
+  req.setHeader("x-request-id", requestid)
+}

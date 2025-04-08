@@ -1,0 +1,28 @@
+meta {
+  name: DELETE-Test
+  type: http
+  seq: 1
+}
+
+delete {
+  url: http://localhost:8836/api/RequestHandler/test
+  body: json
+  auth: none
+}
+
+headers {
+  x-api-key: 12345
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "rows": [
+      {
+        "param1": "seven",
+        "param2": "null"
+      }
+    ]
+  }
+}

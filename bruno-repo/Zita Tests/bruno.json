@@ -1,0 +1,17 @@
+{
+  "version": "1",
+  "name": "Zita Tests",
+  "type": "collection",
+  "tests": [
+    "AuthEndpointsTest.bru",
+    "DELETE-Test.bru",
+    "GET-Test.bru",
+    "PATCH-Test.bru",
+    "POST-Test.bru",
+    "PUT-Test.bru"
+  ],
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}	
